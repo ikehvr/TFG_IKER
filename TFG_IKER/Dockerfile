@@ -17,3 +17,8 @@ RUN npm install && npm run build
 # Ajustar permisos para las carpetas críticas de Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Limpiar y reconstruir la caché de Laravel para producción
+RUN php artisan config:clear \
+    && php artisan cache:clear \
+    && php artisan route:clear
