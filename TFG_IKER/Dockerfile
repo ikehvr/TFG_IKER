@@ -1,5 +1,8 @@
 FROM richarvey/nginx-php-fpm:latest
 
+# Instalar Node.js y npm en el contenedor
+RUN apk add --no-cache nodejs npm
+
 # Copiar el código del proyecto al contenedor
 COPY . /var/www/html
 
