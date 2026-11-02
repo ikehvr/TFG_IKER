@@ -14,5 +14,6 @@ ENV DOCUMENT_ROOT=/var/www/html/public
 RUN composer install --no-dev --optimize-autoloader
 RUN npm install && npm run build
 
-# Ajustar permisos para las carpetas de Laravel
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# Ajustar permisos para las carpetas críticas de Laravel
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
+    && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
